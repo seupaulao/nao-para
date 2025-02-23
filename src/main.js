@@ -37,6 +37,26 @@ k.scene("game", ()=>{
         k.body({ isStatic: true })
     ])
 
+        k.add([
+        k.color("0000ff"),
+        k.rect(150, 48),
+        k.outline(4),
+        k.area(),
+        k.pos(250, height()-144),
+        k.body({ isStatic: true }),
+        "plataforma"
+    ])
+
+    k.add([
+        k.color("0000ff"),
+        k.rect(150, 48),
+        k.outline(4),
+        k.area(),
+        k.pos(width()/2, 300),
+        k.body({ isStatic: true }),
+        "plataforma"
+    ])
+
     k.add([
         k.color("ff0000"),
         k.rect(48, k.height()-150),
@@ -46,6 +66,8 @@ k.scene("game", ()=>{
         k.body({ isStatic: true }),
         "parede"
     ])
+
+
 
      k.add([
         k.color("ff0000"),
@@ -58,10 +80,7 @@ k.scene("game", ()=>{
     ])
 
     onButtonPress("jump", () => {
-    
-        // Now we'll check if the player is on the ground to make it jump
         if (player.isGrounded()) {
-            // .jump() is provided by body()
             player.jump();
         }
     });
@@ -70,19 +89,11 @@ k.scene("game", ()=>{
         player.move(MOVE_SPEED * direcao, 0)
     })
     
-   // onButtonDown("move", ()=>{
-   //     player.move(MOVE_SPEED * direcao, 0)
-   // })
-    
-  //  console.log(direcao)
 
     player.onCollide("parede", ()=>{
         direcao *= -1
-      //  console.log(direcao)
     })
 
-   
-  
 })
 
 k.go("game")
